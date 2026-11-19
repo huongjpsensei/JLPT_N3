@@ -928,7 +928,15 @@ document.getElementById("admin-add-btn").addEventListener("click", async () => {
 });
 
 /* =================== INIT =================== */
+// Tạm tắt cơ chế duyệt truy cập: đặt true để bật lại.
+const ACCESS_GATE_ENABLED = false;
+
 async function initAccess(){
+  if(!ACCESS_GATE_ENABLED){
+    showView("app");
+    if(!examsReady){ initExams(); examsReady = true; }
+    return;
+  }
   showView("gate");
   const session = loadSession();
   if(session && session.email){
