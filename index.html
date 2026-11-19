@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đề Thi Thật N3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ---------- Tokens ---------- */
+  :root{
+    --bg:#F6F1E6;
+    --bg-raised:#FFFEFA;
+    --bg-sunken:#EEE6D3;
+    --ink:#2A2318;
+    --ink-muted:#766C56;
+    --ink-faint:#9C9276;
+    --line:#DDD2B4;
+    --line-soft:#E9E0C9;
+    --indigo:#1F4E79;
+    --indigo-strong:#153A5C;
+    --indigo-soft:#E3ECF3;
+    --indigo-soft-line:#C7D9E8;
+    --shu:#AE3527;
+    --shu-soft:#F5E3DF;
+    --shu-soft-line:#E7C3BA;
+    --good:#3E7A52;
+    --good-soft:#E2EEE3;
+    --good-soft-line:#C1DCC7;
+    --shadow: 0 1px 2px rgba(42,35,24,0.06), 0 6px 20px -8px rgba(42,35,24,0.18);
+    --shadow-lg: 0 2px 4px rgba(42,35,24,0.08), 0 16px 34px -10px rgba(42,35,24,0.30);
+    --radius: 10px;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#191A1D;
+      --bg-raised:#232429;
+      --bg-sunken:#1F2024;
+      --ink:#EDE7D8;
+      --ink-muted:#A79E89;
+      --ink-faint:#7C755F;
+      --line:#3A3A3E;
+      --line-soft:#2C2D31;
+      --indigo:#89B4DE;
+      --indigo-strong:#A9CCEF;
+      --indigo-soft:rgba(137,180,222,0.14);
+      --indigo-soft-line:rgba(137,180,222,0.32);
+      --shu:#E28A7C;
+      --shu-soft:rgba(226,138,124,0.14);
+      --shu-soft-line:rgba(226,138,124,0.34);
+      --good:#7BC496;
+      --good-soft:rgba(123,196,150,0.14);
+      --good-soft-line:rgba(123,196,150,0.34);
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -10px rgba(0,0,0,0.5);
+      --shadow-lg: 0 2px 4px rgba(0,0,0,0.4), 0 18px 38px -10px rgba(0,0,0,0.65);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#191A1D;
+    --bg-raised:#232429;
+    --bg-sunken:#1F2024;
+    --ink:#EDE7D8;
+    --ink-muted:#A79E89;
+    --ink-faint:#7C755F;
+    --line:#3A3A3E;
+    --line-soft:#2C2D31;
+    --indigo:#89B4DE;
+    --indigo-strong:#A9CCEF;
+    --indigo-soft:rgba(137,180,222,0.14);
+    --indigo-soft-line:rgba(137,180,222,0.32);
+    --shu:#E28A7C;
+    --shu-soft:rgba(226,138,124,0.14);
+    --shu-soft-line:rgba(226,138,124,0.34);
+    --good:#7BC496;
+    --good-soft:rgba(123,196,150,0.14);
+    --good-soft-line:rgba(123,196,150,0.34);
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px -10px rgba(0,0,0,0.5);
+    --shadow-lg: 0 2px 4px rgba(0,0,0,0.4), 0 18px 38px -10px rgba(0,0,0,0.65);
+    color-scheme: dark;
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    font-size:15px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .jp{ font-family:"Noto Sans JP","Be Vietnam Pro",sans-serif; }
+  h1,h2,h3,.disp{ font-family:"Shippori Mincho",serif; font-weight:700; text-wrap:balance; }
+  .mono{ font-family:"JetBrains Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums; }
+  a{ color:var(--indigo); }
+  ::selection{ background:var(--indigo-soft); }
+
+  /* ---------- App shell ---------- */
+  .app{
+    display:flex;
+    min-height:100vh;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .rail{
+    flex:0 0 216px;
+    padding:28px 14px 28px 20px;
+    position:sticky;
+    top:0;
+    align-self:flex-start;
+    height:100vh;
+    overflow-y:auto;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+  .brand{ display:flex; flex-direction:column; gap:2px; padding:2px 10px 14px; border-bottom:1px solid var(--line); }
+  .brand .mark{ font-family:"Shippori Mincho",serif; font-weight:800; font-size:21px; letter-spacing:.01em; }
+  .brand .sub{ font-size:11.5px; color:var(--ink-muted); letter-spacing:.03em; }
+  .brand .stats{ margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; }
+  .brand .stat{ font-size:10.5px; color:var(--indigo); background:var(--indigo-soft); border:1px solid var(--indigo-soft-line); padding:2px 7px; border-radius:20px; }
+
+  nav.tabs{ display:flex; flex-direction:column; gap:2px; }
+  nav.tabs .grp-label{ font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-faint); margin:14px 10px 4px; }
+  nav.tabs .grp-label:first-child{ margin-top:0; }
+  .tab-btn{
+    display:flex; align-items:center; justify-content:space-between; gap:8px;
+    text-align:left; border:1px solid transparent; background:none; cursor:pointer;
+    color:var(--ink-muted); font:inherit; font-size:13.5px; font-weight:500;
+    padding:8px 10px; border-radius:8px; position:relative;
+  }
+  .tab-btn:hover{ background:var(--bg-sunken); color:var(--ink); }
+  .tab-btn.active{ background:var(--indigo-soft); color:var(--indigo-strong); font-weight:700; border-color:var(--indigo-soft-line); }
+  .tab-btn .score-pill{ font-size:10px; font-family:"JetBrains Mono",monospace; color:var(--ink-faint); background:var(--bg-sunken); border:1px solid var(--line); border-radius:20px; padding:1px 6px; }
+  .tab-btn.active .score-pill{ background:var(--bg-raised); }
+  .tab-btn.done::before{
+    content:""; position:absolute; left:-1px; top:50%; transform:translateY(-50%);
+    width:3px; height:60%; background:var(--good); border-radius:3px;
+  }
+
+  main{ flex:1; min-width:0; padding:28px 26px 80px; }
+  .panel{ display:none; }
+  .panel.active{ display:block; animation:fadein .15s ease; }
+  @keyframes fadein{ from{opacity:0; transform:translateY(2px);} to{opacity:1; transform:none;} }
+
+  .page-head{ margin-bottom:22px; }
+  .page-head h1{ font-size:26px; margin:0 0 6px; }
+  .page-head p{ margin:0; color:var(--ink-muted); max-width:62ch; }
+
+  /* ---------- Cards / callouts ---------- */
+  .card{
+    background:var(--bg-raised); border:1px solid var(--line-soft); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:18px 20px;
+  }
+  .callout{
+    border-left:3px solid var(--shu); background:var(--shu-soft); border-radius:0 8px 8px 0;
+    padding:12px 16px; font-size:13.5px; color:var(--ink);
+  }
+  .callout b{ color:var(--shu); }
+  .callout.indigo{ border-left-color:var(--indigo); background:var(--indigo-soft); }
+  .callout.indigo b{ color:var(--indigo-strong); }
+
+  .steps{ list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column; gap:8px; counter-reset:step; }
+  .steps li{ counter-increment:step; padding-left:34px; position:relative; font-size:13.5px; }
+  .steps li::before{
+    content:counter(step); position:absolute; left:0; top:-1px; width:22px; height:22px; border-radius:50%;
+    background:var(--indigo-soft); color:var(--indigo-strong); border:1px solid var(--indigo-soft-line);
+    font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;
+  }
+
+  /* ---------- Toolbar / search ---------- */
+  .toolbar{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:16px; }
+  .search{
+    flex:1 1 240px; display:flex; align-items:center; gap:8px;
+    background:var(--bg-raised); border:1px solid var(--line); border-radius:8px; padding:8px 12px;
+  }
+  .search svg{ flex:none; opacity:.5; }
+  .search input{
+    border:none; outline:none; background:none; color:var(--ink); font:inherit; font-size:13.5px; width:100%;
+  }
+  .search input::placeholder{ color:var(--ink-faint); }
+  .btn{
+    border:1px solid var(--line); background:var(--bg-raised); color:var(--ink); font:inherit; font-size:12.5px; font-weight:600;
+    padding:8px 13px; border-radius:8px; cursor:pointer; white-space:nowrap;
+  }
+  .btn:hover{ border-color:var(--ink-faint); }
+  .btn.primary{ background:var(--indigo); border-color:var(--indigo); color:#fff; }
+  .btn.primary:hover{ background:var(--indigo-strong); }
+  .btn.ghost{ background:none; }
+  .btn:disabled{ opacity:.45; cursor:not-allowed; }
+  .chiprow{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+  .chip{
+    border:1px solid var(--line); background:var(--bg-raised); color:var(--ink-muted); font:inherit; font-size:12px; font-weight:600;
+    padding:5px 10px; border-radius:20px; cursor:pointer;
+  }
+  .chip:hover{ color:var(--ink); }
+  .chip.on{ background:var(--indigo); border-color:var(--indigo); color:#fff; }
+
+  /* ---------- Vocab accordion ---------- */
+  details.cat{ background:var(--bg-raised); border:1px solid var(--line-soft); border-radius:var(--radius); margin-bottom:10px; overflow:hidden; }
+  details.cat[open]{ box-shadow:var(--shadow); }
+  details.cat summary{
+    list-style:none; cursor:pointer; display:flex; align-items:center; gap:10px; padding:13px 16px;
+    font-weight:700; font-size:14px;
+  }
+  details.cat summary::-webkit-details-marker{ display:none; }
+  details.cat summary .code{
+    flex:none; width:26px; height:26px; border-radius:7px; background:var(--indigo-soft); color:var(--indigo-strong);
+    display:flex; align-items:center; justify-content:center; font-family:"Shippori Mincho",serif; font-weight:800; font-size:13px;
+  }
+  details.cat summary .arrow{ margin-left:auto; transition:transform .15s; color:var(--ink-faint); }
+  details.cat[open] summary .arrow{ transform:rotate(90deg); }
+  details.cat summary .n{ font-weight:500; font-size:11.5px; color:var(--ink-faint); font-family:"JetBrains Mono",monospace; }
+
+  .tblwrap{ overflow-x:auto; }
+  table.vocab{ width:100%; border-collapse:collapse; }
+  table.vocab thead th{
+    text-align:left; font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint);
+    padding:6px 16px; border-top:1px solid var(--line-soft); font-weight:600;
+  }
+  table.vocab tbody tr{ border-top:1px solid var(--line-soft); }
+  table.vocab tbody tr:hover{ background:var(--bg-sunken); }
+  table.vocab td{ padding:8px 16px; vertical-align:baseline; }
+  table.vocab td.stt{ font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--ink-faint); width:1%; }
+  table.vocab td.word{ font-size:16px; white-space:nowrap; }
+  table.vocab td.reading{ color:var(--indigo); font-size:13px; white-space:nowrap; }
+  table.vocab td.meaning{ color:var(--ink); width:100%; }
+  table.vocab td.lvl{ width:1%; }
+  .lvl-dot{ display:inline-block; width:7px; height:7px; border-radius:50%; }
+  .lvl-dot.A{ background:var(--shu); }
+  .lvl-dot.B{ background:var(--ink-faint); }
+
+  /* ---------- Kanji grid ---------- */
+  .kgrid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(128px,1fr)); gap:10px; }
+  .kcard{
+    background:var(--bg-raised); border:1px solid var(--line-soft); border-radius:10px; padding:12px 10px;
+    text-align:center; box-shadow:var(--shadow);
+  }
+  .kcard .glyph{ font-family:"Shippori Mincho",serif; font-size:32px; line-height:1; margin-bottom:6px; }
+  .kcard .ex{ font-size:13px; margin-bottom:2px; }
+  .kcard .rd{ color:var(--indigo); font-size:11.5px; margin-bottom:4px; }
+  .kcard .mn{ color:var(--ink-muted); font-size:11px; line-height:1.35; }
+
+  /* ---------- Quiz ---------- */
+  .quiz-head{
+    display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-bottom:14px; padding:13px 18px;
+    background:var(--bg-raised); border:1px solid var(--line-soft); border-top:3px solid var(--indigo); border-radius:var(--radius);
+    box-shadow:var(--shadow-lg);
+    position:sticky; top:0; z-index:3;
+  }
+  @media (max-width:860px){
+    .quiz-head{ position:static; }
+  }
+  .quiz-head .timer{ font-family:"JetBrains Mono",monospace; font-size:19px; font-weight:700; color:var(--indigo-strong); min-width:64px; }
+  .quiz-head .progress-wrap{ flex:1 1 160px; }
+  .quiz-head .progress-label{ font-size:11px; color:var(--ink-muted); margin-bottom:4px; display:flex; justify-content:space-between; }
+  .progress-track{ height:6px; border-radius:6px; background:var(--bg-sunken); overflow:hidden; }
+  .progress-fill{ height:100%; background:var(--indigo); border-radius:6px; transition:width .2s; }
+  .quiz-actions{ display:flex; gap:8px; flex-wrap:wrap; }
+
+  .score-banner{
+    display:none; margin:14px 0; padding:18px 20px; border-radius:var(--radius); border:1px solid var(--good-soft-line);
+    background:var(--good-soft); align-items:center; gap:20px; flex-wrap:wrap;
+  }
+  .score-banner.show{ display:flex; }
+  .score-banner .big{ font-family:"Shippori Mincho",serif; font-size:34px; font-weight:800; color:var(--good); }
+  .score-banner .big small{ font-size:15px; font-weight:600; color:var(--ink-muted); font-family:"Be Vietnam Pro",sans-serif; }
+  .score-banner .breakdown{ display:flex; gap:14px; flex-wrap:wrap; font-size:12px; color:var(--ink-muted); }
+  .score-banner .breakdown b{ color:var(--ink); }
+
+  .qsection-title{
+    display:flex; align-items:baseline; gap:10px; margin:26px 0 12px; padding-bottom:6px; border-bottom:2px solid var(--line);
+  }
+  .qsection-title .disp{ font-size:17px; }
+  .qsection-title .hint{ font-size:12px; color:var(--ink-muted); }
+  .qsection-title:first-child{ margin-top:6px; }
+
+  .qcard{
+    background:var(--bg-raised); border:1px solid var(--line-soft); border-radius:var(--radius); padding:14px 18px 16px;
+    margin-bottom:10px; transition:border-color .15s, background .15s;
+  }
+  .qcard .qtext{ display:flex; gap:10px; margin-bottom:12px; }
+  .qcard .qnum{ flex:none; font-family:"JetBrains Mono",monospace; font-weight:700; color:var(--ink-faint); font-size:12px; padding-top:3px; }
+  .qcard .qsentence{ font-size:16.5px; }
+  .qcard.answered{ border-color:var(--indigo-soft-line); }
+  .qcard.correct{ border-color:var(--good-soft-line); background:var(--good-soft); }
+  .qcard.wrong{ border-color:var(--shu-soft-line); background:var(--shu-soft); }
+
+  .options{ display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin-left:30px; }
+  .opt{
+    display:flex; align-items:center; gap:9px; border:1px solid var(--line); background:var(--bg-raised);
+    border-radius:8px; padding:8px 10px; cursor:pointer; font-size:14.5px; text-align:left;
+  }
+  .opt:hover{ border-color:var(--indigo); }
+  .opt .bub{
+    flex:none; width:22px; height:22px; border-radius:50%; border:1.5px solid var(--ink-faint); color:var(--ink-faint);
+    display:flex; align-items:center; justify-content:center; font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:700;
+  }
+  .opt.sel{ border-color:var(--indigo); background:var(--indigo-soft); }
+  .opt.sel .bub{ background:var(--indigo); border-color:var(--indigo); color:#fff; }
+  .qcard.graded .opt{ cursor:default; }
+  .qcard.graded .opt.is-correct{ border-color:var(--good); background:var(--good-soft); }
+  .qcard.graded .opt.is-correct .bub{ background:var(--good); border-color:var(--good); color:#fff; }
+  .qcard.graded .opt.sel.is-wrong{ border-color:var(--shu); background:var(--shu-soft); }
+  .qcard.graded .opt.sel.is-wrong .bub{ background:var(--shu); border-color:var(--shu); color:#fff; }
+  .qcard .stamp{ margin-top:10px; margin-left:30px; font-size:12px; font-weight:700; display:none; align-items:center; gap:6px; }
+  .qcard.graded .stamp{ display:flex; }
+  .qcard.correct .stamp{ color:var(--good); }
+  .qcard.wrong .stamp{ color:var(--shu); }
+  .qcard .stamp .mk{ font-size:15px; }
+
+  .qcard .situation{ font-size:12.5px; color:var(--ink-muted); margin-bottom:8px; }
+  .qcard .listen-controls{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+  .btn.sm{ padding:5px 11px; font-size:12px; }
+  .rate-select{ font-size:12px; padding:5px 7px; border-radius:7px; border:1px solid var(--line); background:var(--bg-raised); color:var(--ink); }
+  .qcard .script-box{
+    display:none; background:var(--bg-sunken); border:1px solid var(--line-soft); border-radius:8px;
+    padding:10px 12px; font-size:14.5px; line-height:1.7; margin-bottom:12px; white-space:pre-wrap;
+  }
+  .qcard .script-box.show{ display:block; }
+
+  .passage{
+    background:var(--bg-sunken); border:1px solid var(--line); border-left:4px solid var(--indigo);
+    border-radius:var(--radius); padding:14px 18px; margin:14px 0 10px; font-size:15px; line-height:1.9;
+  }
+  .passage p{ margin:0 0 8px; text-indent:1em; }
+  .passage p:last-child{ margin-bottom:0; }
+  .passage .ptitle{ text-indent:0; text-align:center; font-weight:700; }
+  .passage .ptitle small{ font-weight:400; color:var(--ink-muted); margin-left:8px; }
+  .passage .note{ text-indent:0; font-size:13px; color:var(--ink-muted); }
+  .passage .doc{ background:var(--bg-raised); border:1px solid var(--line-soft); border-radius:8px; padding:10px 14px; margin-top:6px; }
+  .passage .doc p{ text-indent:0; }
+  .passage .ptable{ width:100%; border-collapse:collapse; font-size:14px; margin:8px 0; }
+  .passage .ptable th, .passage .ptable td{ border:1px solid var(--line); padding:5px 8px; text-align:left; vertical-align:top; }
+  .passage .ptable th{ background:var(--bg-sunken); white-space:nowrap; font-weight:600; }
+  .qsentence u, .opt u, .passage u{ text-decoration-thickness:2px; text-underline-offset:3px; }
+  .qcard .explain{
+    display:none; margin:10px 0 0 30px; padding:8px 12px; border-radius:8px; font-size:13.5px; line-height:1.6;
+    background:var(--bg-raised); border:1px dashed var(--line); color:var(--ink);
+  }
+  .qcard.graded .explain{ display:block; }
+
+  @media (max-width:560px){
+    .options{ grid-template-columns:1fr; margin-left:0; }
+    .qcard .explain{ margin-left:0; }
+    .passage{ padding:12px 12px; }
+    .passage .ptable th{ white-space:normal; }
+    .qcard .qtext{ margin-bottom:10px; }
+    .qcard .stamp{ margin-left:0; }
+    .qsection-title{ flex-direction:column; align-items:flex-start; gap:2px; }
+  }
+
+  .footnote{ margin-top:26px; font-size:12px; color:var(--ink-faint); max-width:70ch; }
+
+  /* ---------- Rail collapse on mobile ---------- */
+  @media (max-width:860px){
+    .app{ flex-direction:column; }
+    .rail{
+      position:sticky; top:0; z-index:5; height:auto; width:100%; flex:none; padding:12px 12px 10px;
+      background:var(--bg); border-bottom:1px solid var(--line); backdrop-filter:saturate(1.4) blur(6px);
+    }
+    .brand{ border-bottom:none; padding-bottom:8px; flex-direction:row; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px 14px; }
+    .brand .stats{ margin-top:0; }
+    nav.tabs{ flex-direction:row; overflow-x:auto; gap:6px; padding-bottom:2px; }
+    nav.tabs .grp-label{ display:none; }
+    .tab-btn{ flex:none; }
+    main{ padding:20px 16px 60px; }
+  }
+
+  :focus-visible{ outline:2px solid var(--indigo); outline-offset:2px; }
+  @media (prefers-reduced-motion:reduce){ *{ animation:none !important; transition:none !important; } }
+
+  /* ---------- Gate / Admin ---------- */
+  #view-gate{ min-height:100vh; display:flex; align-items:center; justify-content:center; padding:32px 18px; }
+  .gate-card{
+    width:100%; max-width:400px; background:var(--bg-raised); border:1px solid var(--line-soft);
+    border-radius:14px; box-shadow:var(--shadow); padding:28px 26px 24px;
+  }
+  .gate-tag{
+    display:inline-flex; align-items:center; gap:5px; font-family:"Shippori Mincho",serif; font-size:12px; font-weight:700;
+    color:var(--indigo-strong); background:var(--indigo-soft); border:1px solid var(--indigo-soft-line);
+    padding:3px 9px; border-radius:20px; margin-bottom:14px;
+  }
+  .gate-card h1{ font-size:21px; margin:0 0 6px; }
+  .gate-card p.desc{ margin:0 0 20px; font-size:13px; color:var(--ink-muted); }
+  .field{ margin-bottom:14px; }
+  .field label{ display:block; font-size:11.5px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); margin-bottom:5px; }
+  .field input{
+    width:100%; border:1px solid var(--line); background:var(--bg); color:var(--ink); font:inherit; font-size:14px;
+    padding:10px 12px; border-radius:8px; outline:none; box-sizing:border-box;
+  }
+  .field input:focus{ border-color:var(--indigo); }
+  .gate-status{ display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--ink-muted); min-height:20px; margin-bottom:14px; }
+  .status-dot{ width:7px; height:7px; border-radius:50%; background:var(--ink-faint); flex:none; }
+  .status-dot.pending{ background:var(--indigo); }
+  .status-dot.approved{ background:var(--good); }
+  .status-dot.rejected{ background:var(--shu); }
+  .gate-actions{ display:flex; gap:8px; }
+  .gate-actions .btn{ flex:1; }
+  .gate-err{ font-size:12px; color:var(--shu); margin:-6px 0 12px; display:none; }
+  .gate-err.show{ display:block; }
+
+  #view-admin{ max-width:900px; margin:0 auto; padding:32px 24px 60px; }
+  .admin-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:20px; flex-wrap:wrap; }
+  .admin-head h1{ font-size:22px; margin:0; }
+  table.reqs{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  table.reqs th{ text-align:left; font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); padding:8px 12px; }
+  table.reqs td{ padding:10px 12px; border-top:1px solid var(--line-soft); vertical-align:middle; }
+  table.reqs td.em{ font-family:"JetBrains Mono",monospace; font-size:12.5px; }
+  .badge{ display:inline-flex; align-items:center; gap:5px; font-size:11px; font-weight:700; padding:3px 9px; border-radius:20px; white-space:nowrap; }
+  .badge.pending{ background:var(--indigo-soft); color:var(--indigo-strong); border:1px solid var(--indigo-soft-line); }
+  .badge.approved{ background:var(--good-soft); color:var(--good); border:1px solid var(--good-soft-line); }
+  .badge.rejected{ background:var(--shu-soft); color:var(--shu); border:1px solid var(--shu-soft-line); }
+  .row-actions{ display:flex; gap:6px; flex-wrap:wrap; }
+  .row-actions .btn{ padding:5px 10px; font-size:11.5px; }
+  .admin-toolbar{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; align-items:center; }
+  .admin-add{ display:flex; gap:8px; margin-top:18px; flex-wrap:wrap; }
+  .admin-add input{ flex:1 1 220px; border:1px solid var(--line); background:var(--bg-raised); color:var(--ink); font:inherit; font-size:13px; padding:8px 11px; border-radius:8px; box-sizing:border-box; }
+  .empty-note{ color:var(--ink-faint); font-size:13px; padding:20px 0; }
+
+  .top-account{ display:none; align-items:center; justify-content:space-between; gap:8px; margin-top:10px; padding-top:10px; border-top:1px solid var(--line); }
+  .top-account .who{ font-size:11px; color:var(--ink-faint); font-family:"JetBrains Mono",monospace; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .top-account button{ font-size:11px; color:var(--ink-muted); background:none; border:none; cursor:pointer; text-decoration:underline; text-underline-offset:2px; font:inherit; flex:none; }
+  .top-account button:hover{ color:var(--shu); }
+  .back-link{ font-size:11px; color:var(--indigo); text-decoration:underline; text-underline-offset:2px; flex:none; }
+  .back-link:hover{ color:var(--shu); }
+  .page-head a{ color:var(--indigo); }
+</style>
+
+</head>
+<body>
+<div id="view-gate" style="display:none;">
+  <div class="gate-card">
+    <span class="gate-tag jp">申込書</span>
+    <h1>Truy cập trang luyện đề</h1>
+    <p class="desc">Nhập email của bạn. Bấm "Gửi yêu cầu" để xin truy cập; sau khi admin duyệt, bấm "Vào trang".</p>
+
+    <div class="field">
+      <label for="gate-email">Email</label>
+      <input type="email" id="gate-email" placeholder="ban@gmail.com" autocomplete="email">
+    </div>
+    <div class="field" id="gate-pass-field" style="display:none;">
+      <label for="gate-pass">Mật khẩu quản trị</label>
+      <input type="password" id="gate-pass" placeholder="••••••••" autocomplete="current-password">
+    </div>
+
+    <div class="gate-err" id="gate-err"></div>
+    <div class="gate-status" id="gate-status"><span class="status-dot" id="gate-dot"></span><span id="gate-status-text">Đang kiểm tra phiên đã lưu…</span></div>
+
+    <div class="gate-actions" id="gate-actions-user">
+      <button class="btn" id="btn-request" type="button">Gửi yêu cầu</button>
+      <button class="btn primary" id="btn-enter" type="button" disabled>Vào trang</button>
+    </div>
+    <div class="gate-actions" id="gate-actions-admin" style="display:none;">
+      <button class="btn primary" id="btn-admin-login" type="button" style="flex:1;">Đăng nhập quản trị</button>
+    </div>
+  </div>
+</div>
+
+<div id="view-admin" style="display:none;">
+  <div class="admin-head">
+    <div>
+      <div class="gate-tag jp" style="margin-bottom:8px;">管理</div>
+      <h1>Duyệt truy cập</h1>
+    </div>
+    <div class="row-actions">
+      <button class="btn ghost" id="admin-logout" type="button">Đăng xuất</button>
+    </div>
+  </div>
+
+  <div class="card" style="padding:6px 0 12px;">
+    <div style="overflow-x:auto;">
+    <table class="reqs">
+      <thead><tr><th>Email</th><th>Gửi lúc</th><th>Trạng thái</th><th>Hành động</th></tr></thead>
+      <tbody id="admin-tbody"></tbody>
+    </table>
+    </div>
+    <div class="empty-note" id="admin-empty" style="display:none;">Chưa có yêu cầu nào.</div>
+  </div>
+
+  <div class="admin-add">
+    <input type="email" id="admin-add-email" placeholder="Thêm email và duyệt luôn…">
+    <button class="btn primary" id="admin-add-btn" type="button">Thêm &amp; duyệt</button>
+  </div>
+</div>
+
+<div class="app" id="view-app" style="display:none;">
+  <aside class="rail">
+    <div class="brand">
+      <div class="mark">Đề thi thật N3</div>
+      <div class="sub">言語知識・読解 — 7/2021 · 7/2022</div>
+      <div class="stats" id="brand-stats"></div>
+      <div class="top-account" id="brand-account">
+        <span class="who" id="brand-who"></span>
+        <button id="brand-logout" type="button">Đăng xuất</button>
+      </div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <div class="grp-label">Đề thi thật</div>
+    </nav>
+  </aside>
+
+  <main id="main"></main>
+</div>
+
+<script src="exams.js"></script>
+<script>
+/* =================== GIAO DIỆN ĐỀ =================== */
+const SECTION_HINTS = {
+  "問題1 漢字読み": "Chọn cách đọc đúng của từ được viết bằng Kanji.",
+  "問題2 表記": "Chọn cách viết Kanji đúng cho từ được viết bằng hiragana.",
+  "問題3 文脈規定": "Chọn từ phù hợp nhất với ngữ cảnh.",
+  "問題4 言い換え類義": "Chọn cách diễn đạt có nghĩa gần nhất.",
+  "問題5 用法": "Chọn câu sử dụng từ đúng nhất.",
+  "文法 問題1 文の文法1": "Chọn từ/mẫu ngữ pháp phù hợp với chỗ trống.",
+  "文法 問題2 文の組み立て": "Sắp xếp 4 vế, chọn vế đứng ở vị trí ★.",
+  "文法 問題3 文章の文法": "Điền vào chỗ trống trong đoạn văn.",
+  "読解 問題4 内容理解（短文）": "Đọc đoạn ngắn (~150–200 chữ) và trả lời.",
+  "読解 問題5 内容理解（中文）": "Đọc đoạn trung bình (~350 chữ) và trả lời.",
+  "読解 問題6 内容理解（長文）": "Đọc đoạn dài (~550 chữ) và trả lời.",
+  "読解 問題7 情報検索": "Tìm thông tin trong thông báo/tờ hướng dẫn."
+};
+const LAST_TAB_KEY = "n3_real_last_tab";
+const resultKey = id => "n3_real_" + id + "_result";
+const $ = id => document.getElementById(id);
+
+function fmtTime(sec){
+  const m = Math.floor(sec/60), s = sec%60;
+  return String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+}
+
+function buildShell(){
+  const nav = $("tabs"), main = $("main");
+  let total = 0;
+  EXAMS.forEach(ex => {
+    total += ex.questions.length;
+    nav.insertAdjacentHTML("beforeend",
+      `<button class="tab-btn" data-tab="${ex.id}">${ex.tab}<span class="score-pill" id="pill-${ex.id}"></span></button>`);
+    main.insertAdjacentHTML("beforeend", `
+    <section class="panel" id="panel-${ex.id}">
+      <div class="page-head">
+        <h1>${ex.title}</h1>
+        <p>${ex.desc} Sau khi nộp bài, mỗi câu có giải thích ngắn bằng tiếng Việt. Phần 聴解 không có vì file đề không kèm audio. <a href="${encodeURI(ex.pdf)}" target="_blank" rel="noopener">Xem PDF gốc</a></p>
+      </div>
+      <div class="quiz-head">
+        <button class="btn" id="timerbtn-${ex.id}">Bắt đầu tính giờ</button>
+        <span class="timer mono" id="timer-${ex.id}">${fmtTime(ex.seconds)}</span>
+        <div class="progress-wrap">
+          <div class="progress-label"><span id="prog-label-${ex.id}">0 / ${ex.questions.length} câu</span></div>
+          <div class="progress-track"><div class="progress-fill" id="prog-fill-${ex.id}" style="width:0%;"></div></div>
+        </div>
+        <div class="quiz-actions">
+          <button class="btn ghost" id="retry-${ex.id}">Làm lại</button>
+          <button class="btn primary" id="submit-${ex.id}">Nộp bài</button>
+        </div>
+      </div>
+      <div class="score-banner" id="banner-${ex.id}">
+        <div class="score-num big"></div>
+        <div class="breakdown"></div>
+      </div>
+      <div id="qroot-${ex.id}"></div>
+    </section>`);
+  });
+  $("brand-stats").innerHTML = `<span class="stat">${EXAMS.length} đề</span><span class="stat">${total} câu</span><span class="stat">có lời giải</span>`;
+  document.querySelectorAll(".tab-btn").forEach(b => b.addEventListener("click", () => showTab(b.dataset.tab)));
+}
+
+function showTab(id){
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === id));
+  document.querySelectorAll(".panel").forEach(p => p.classList.toggle("active", p.id === "panel-" + id));
+  try { localStorage.setItem(LAST_TAB_KEY, id); } catch(e){}
+}
+
+/* =================== LÀM BÀI / CHẤM ĐIỂM =================== */
+const state = {}; // id -> { answers:{}, submitted, timer:{sec, running, handle} }
+
+function renderQuestions(ex){
+  const root = $("qroot-" + ex.id);
+  let html = "", lastSection = null;
+  ex.questions.forEach(q => {
+    if(q.section !== lastSection){
+      html += `<div class="qsection-title"><span class="disp jp">${q.section}</span><span class="hint">${SECTION_HINTS[q.section] || ""}</span></div>`;
+      lastSection = q.section;
+    }
+    if(q.passage) html += `<div class="passage jp">${q.passage}</div>`;
+    html += `<div class="qcard" id="${ex.id}-q${q.num}" data-num="${q.num}">
+      <div class="qtext"><span class="qnum">${q.label || q.num}.</span><span class="qsentence jp">${q.text}</span></div>
+      <div class="options">${q.options.map((opt, oi) =>
+        `<button type="button" class="opt jp" data-opt="${oi+1}"><span class="bub">${oi+1}</span><span>${opt}</span></button>`).join("")}</div>
+      <div class="stamp"><span class="mk"></span><span class="txt"></span></div>
+      ${q.explain ? `<div class="explain">💡 ${q.explain}</div>` : ""}
+    </div>`;
+  });
+  root.innerHTML = html;
+  root.querySelectorAll(".opt").forEach(btn => btn.addEventListener("click", () => {
+    const st = state[ex.id];
+    if(st.submitted) return;
+    const card = btn.closest(".qcard");
+    st.answers[card.dataset.num] = parseInt(btn.dataset.opt, 10);
+    card.querySelectorAll(".opt").forEach(o => o.classList.toggle("sel", o === btn));
+    card.classList.add("answered");
+    updateProgress(ex);
+  }));
+}
+
+function updateProgress(ex){
+  const answered = Object.keys(state[ex.id].answers).length, total = ex.questions.length;
+  $("prog-fill-" + ex.id).style.width = (answered/total*100) + "%";
+  $("prog-label-" + ex.id).textContent = answered + " / " + total + " câu";
+}
+
+function submitExam(ex){
+  const st = state[ex.id];
+  if(st.submitted) return;
+  st.submitted = true;
+  stopTimer(ex);
+  let correct = 0;
+  const bySection = {};
+  ex.questions.forEach(q => {
+    const card = $(ex.id + "-q" + q.num);
+    const chosen = st.answers[q.num];
+    const ok = chosen === q.answer;
+    if(ok) correct++;
+    const b = bySection[q.section] = bySection[q.section] || {ok:0, total:0};
+    b.total++; if(ok) b.ok++;
+    card.classList.add("graded", ok ? "correct" : "wrong");
+    card.querySelectorAll(".opt").forEach(o => {
+      const on = parseInt(o.dataset.opt, 10);
+      if(on === q.answer) o.classList.add("is-correct");
+      if(on === chosen && !ok) o.classList.add("is-wrong");
+    });
+    card.querySelector(".mk").textContent = ok ? "◯" : (chosen ? "✕" : "△");
+    card.querySelector(".txt").textContent = ok ? "Đúng" : (chosen ? "Sai — đáp án đúng: " : "Chưa chọn — đáp án đúng: ") + q.answer;
+  });
+  const total = ex.questions.length;
+  const banner = $("banner-" + ex.id);
+  banner.classList.add("show");
+  banner.querySelector(".score-num").innerHTML = correct + "<small>／" + total + "</small>";
+  banner.querySelector(".breakdown").innerHTML = Object.keys(bySection).map(s =>
+    `<span>${s.replace(/問題\d\s*/,"")}: <b>${bySection[s].ok}/${bySection[s].total}</b></span>`).join("");
+  $("submit-" + ex.id).disabled = true;
+  try { localStorage.setItem(resultKey(ex.id), JSON.stringify({correct, total, ts: Date.now()})); } catch(e){}
+  refreshPill(ex);
+  banner.scrollIntoView({behavior:"smooth", block:"center"});
+}
+
+function resetExam(ex){
+  if(state[ex.id]) stopTimer(ex);
+  state[ex.id] = { answers:{}, submitted:false, timer:{sec:ex.seconds, running:false, handle:null} };
+  renderQuestions(ex);
+  updateProgress(ex);
+  $("banner-" + ex.id).classList.remove("show");
+  $("submit-" + ex.id).disabled = false;
+  $("timer-" + ex.id).textContent = fmtTime(ex.seconds);
+  const tb = $("timerbtn-" + ex.id);
+  tb.textContent = "Bắt đầu tính giờ"; tb.disabled = false;
+}
+
+function stopTimer(ex){
+  const t = state[ex.id].timer;
+  if(t.handle){ clearInterval(t.handle); t.handle = null; }
+  t.running = false;
+}
+
+function toggleTimer(ex){
+  const st = state[ex.id], t = st.timer, label = $("timerbtn-" + ex.id), disp = $("timer-" + ex.id);
+  if(st.submitted) return;
+  if(t.running){ stopTimer(ex); label.textContent = "Tiếp tục"; return; }
+  t.running = true;
+  label.textContent = "Tạm dừng";
+  t.handle = setInterval(() => {
+    t.sec = Math.max(0, t.sec - 1);
+    disp.textContent = fmtTime(t.sec);
+    if(t.sec === 0){ stopTimer(ex); label.textContent = "Hết giờ"; label.disabled = true; }
+  }, 1000);
+}
+
+function refreshPill(ex){
+  let r = null;
+  try { r = JSON.parse(localStorage.getItem(resultKey(ex.id)) || "null"); } catch(e){}
+  if(!r) return;
+  $("pill-" + ex.id).textContent = r.correct + "/" + r.total;
+  document.querySelector(`.tab-btn[data-tab="${ex.id}"]`).classList.add("done");
+}
+
+function initExams(){
+  buildShell();
+  EXAMS.forEach(ex => {
+    resetExam(ex);
+    $("submit-" + ex.id).addEventListener("click", () => submitExam(ex));
+    $("retry-" + ex.id).addEventListener("click", () => resetExam(ex));
+    $("timerbtn-" + ex.id).addEventListener("click", () => toggleTimer(ex));
+    refreshPill(ex);
+  });
+  let last = null;
+  try { last = localStorage.getItem(LAST_TAB_KEY); } catch(e){}
+  showTab(EXAMS.some(e => e.id === last) ? last : EXAMS[0].id);
+}
+
+/* =================== ACCESS CONTROL (Google Sheet backend) =================== */
+const ADMIN_EMAIL = "admin@gmail.com";
+const SHEET_API_URL = "https://script.google.com/macros/s/AKfycbziG00sfOm9t2IRI3PU85e-yMskrblwCbSN3M3iSyy1g-Upl7ky3lzL3SRP4SvPXFefHA/exec";
+const SESSION_KEY = "n3_session";
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+let adminPass = null; // giữ trong bộ nhớ phiên làm việc, không lưu localStorage
+let statusReqToken = 0;
+
+function loadSession(){ try { return JSON.parse(localStorage.getItem(SESSION_KEY) || "null"); } catch(e){ return null; } }
+function saveSession(s){ if(s) localStorage.setItem(SESSION_KEY, JSON.stringify(s)); else localStorage.removeItem(SESSION_KEY); }
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function fmtDate(ts){ return ts ? new Date(ts).toLocaleString("vi-VN") : "—"; }
+function debounce(fn, ms){ let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; }
+
+function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+async function apiCallOnce(params){
+  const qs = new URLSearchParams(params).toString();
+  const res = await fetch(SHEET_API_URL + (SHEET_API_URL.includes("?") ? "&" : "?") + qs);
+  if(!res.ok) throw new Error("http-" + res.status);
+  const data = await res.json();
+  if(!data.ok) throw new Error(data.error || "api-error");
+  return data;
+}
+
+// Apps Script's redirect-based response (302 -> script.googleusercontent.com)
+// occasionally 404s on a cold start or brief propagation delay. Retry silently
+// before surfacing an error, but don't retry genuine application-level errors.
+async function apiCall(params){
+  const NO_RETRY = new Set(["bad pass", "missing email", "unknown action"]);
+  const delays = [0, 500, 1200];
+  let lastErr;
+  for(let i = 0; i < delays.length; i++){
+    if(delays[i]) await sleep(delays[i]);
+    try {
+      return await apiCallOnce(params);
+    } catch(err){
+      lastErr = err;
+      if(NO_RETRY.has(err.message)) throw err;
+    }
+  }
+  throw lastErr;
+}
+
+function showView(name){
+  ["gate","admin"].forEach(n => { document.getElementById("view-" + n).style.display = (n === name) ? "" : "none"; });
+  document.getElementById("view-app").style.display = name === "app" ? "flex" : "none";
+}
+
+function setGateStatus(kind, text){
+  document.getElementById("gate-dot").className = "status-dot" + (kind ? " " + kind : "");
+  document.getElementById("gate-status-text").textContent = text;
+}
+function gateError(msg){
+  const el = document.getElementById("gate-err");
+  el.textContent = msg;
+  el.classList.toggle("show", !!msg);
+}
+
+function applyStatus(status){
+  const btnEnter = document.getElementById("btn-enter");
+  const btnRequest = document.getElementById("btn-request");
+  if(status === "empty"){
+    setGateStatus(null, "Nhập email để bắt đầu.");
+    btnEnter.disabled = true; btnRequest.disabled = false; btnRequest.textContent = "Gửi yêu cầu";
+  } else if(status === "invalid"){
+    setGateStatus(null, "Email không hợp lệ.");
+    btnEnter.disabled = true; btnRequest.disabled = false; btnRequest.textContent = "Gửi yêu cầu";
+  } else if(status === "none"){
+    setGateStatus(null, "Chưa có yêu cầu nào cho email này.");
+    btnEnter.disabled = true; btnRequest.disabled = false; btnRequest.textContent = "Gửi yêu cầu";
+  } else if(status === "pending"){
+    setGateStatus("pending", "Yêu cầu đang chờ admin duyệt.");
+    btnEnter.disabled = true; btnRequest.disabled = true; btnRequest.textContent = "Đã gửi yêu cầu";
+  } else if(status === "approved"){
+    setGateStatus("approved", "Đã được duyệt — có thể vào trang.");
+    btnEnter.disabled = false; btnRequest.disabled = true; btnRequest.textContent = "Đã gửi yêu cầu";
+  } else if(status === "rejected"){
+    setGateStatus("rejected", "Yêu cầu đã bị từ chối. Có thể gửi lại.");
+    btnEnter.disabled = true; btnRequest.disabled = false; btnRequest.textContent = "Gửi lại yêu cầu";
+  } else {
+    setGateStatus("rejected", "Không kết nối được máy chủ.");
+    btnEnter.disabled = true; btnRequest.disabled = false; btnRequest.textContent = "Gửi yêu cầu";
+  }
+}
+
+async function onEmailChanged(e){
+  const email = e.target.value.trim();
+  const isAdmin = email.toLowerCase() === ADMIN_EMAIL;
+  document.getElementById("gate-pass-field").style.display = isAdmin ? "" : "none";
+  document.getElementById("gate-actions-user").style.display = isAdmin ? "none" : "flex";
+  document.getElementById("gate-actions-admin").style.display = isAdmin ? "flex" : "none";
+  gateError("");
+  if(isAdmin){ setGateStatus(null, "Đăng nhập bằng tài khoản quản trị."); return; }
+  if(!email){ applyStatus("empty"); return; }
+  if(!EMAIL_RE.test(email)){ applyStatus("invalid"); return; }
+
+  const token = ++statusReqToken;
+  setGateStatus(null, "Đang kiểm tra…");
+  try {
+    const data = await apiCall({ action:"status", email });
+    if(token !== statusReqToken) return;
+    applyStatus(data.status);
+  } catch(err){
+    if(token !== statusReqToken) return;
+    applyStatus("error");
+  }
+}
+
+let examsReady = false;
+function enterApp(email){
+  showView("app");
+  document.getElementById("brand-account").style.display = "flex";
+  document.getElementById("brand-who").textContent = email;
+  if(!examsReady){ initExams(); examsReady = true; }
+}
+function enterAdmin(items){ showView("admin"); renderAdminTable(items); }
+function logout(){
+  adminPass = null;
+  saveSession(null);
+  document.getElementById("gate-pass").value = "";
+  document.getElementById("gate-email").value = "";
+  showView("gate");
+  applyStatus("empty");
+}
+document.getElementById("gate-email").addEventListener("input", debounce(onEmailChanged, 400));
+document.getElementById("gate-email").addEventListener("keydown", e => {
+  if(e.key !== "Enter") return;
+  const isAdmin = e.target.value.trim().toLowerCase() === ADMIN_EMAIL;
+  if(isAdmin) document.getElementById("gate-pass").focus();
+  else document.getElementById("btn-request").click();
+});
+document.getElementById("gate-pass").addEventListener("keydown", e => { if(e.key === "Enter") document.getElementById("btn-admin-login").click(); });
+
+document.getElementById("btn-request").addEventListener("click", async () => {
+  const email = document.getElementById("gate-email").value.trim();
+  if(!EMAIL_RE.test(email)){ gateError("Email không hợp lệ."); return; }
+  const btn = document.getElementById("btn-request");
+  gateError(""); btn.disabled = true; btn.textContent = "Đang gửi…";
+  try {
+    const data = await apiCall({ action:"request", email });
+    saveSession({ email: email.toLowerCase() });
+    applyStatus(data.status);
+  } catch(err){
+    gateError("Không gửi được yêu cầu. Kiểm tra kết nối mạng.");
+    btn.disabled = false; btn.textContent = "Gửi yêu cầu";
+  }
+});
+document.getElementById("btn-enter").addEventListener("click", async () => {
+  const email = document.getElementById("gate-email").value.trim();
+  const btn = document.getElementById("btn-enter");
+  btn.disabled = true;
+  try {
+    const data = await apiCall({ action:"status", email });
+    if(data.status === "approved"){ saveSession({ email: email.toLowerCase() }); enterApp(email); }
+    else { applyStatus(data.status); btn.disabled = false; }
+  } catch(err){ gateError("Không kết nối được máy chủ."); btn.disabled = false; }
+});
+document.getElementById("btn-admin-login").addEventListener("click", async () => {
+  const pass = document.getElementById("gate-pass").value;
+  const btn = document.getElementById("btn-admin-login");
+  gateError(""); btn.disabled = true; btn.textContent = "Đang đăng nhập…";
+  try {
+    const data = await apiCall({ action:"list", pass });
+    adminPass = pass;
+    enterAdmin(data.items);
+  } catch(err){
+    gateError("Sai mật khẩu hoặc không kết nối được.");
+  } finally {
+    btn.disabled = false; btn.textContent = "Đăng nhập quản trị";
+  }
+});
+document.getElementById("brand-logout").addEventListener("click", logout);
+document.getElementById("admin-logout").addEventListener("click", logout);
+
+async function refreshAdmin(){
+  try {
+    const data = await apiCall({ action:"list", pass: adminPass });
+    renderAdminTable(data.items);
+  } catch(err){
+    alert("Mất phiên quản trị hoặc mất kết nối. Vui lòng đăng nhập lại.");
+    logout();
+  }
+}
+
+function renderAdminTable(items){
+  const list = (items || []).slice().sort((a,b) => (b.ts||0) - (a.ts||0));
+  const tbody = document.getElementById("admin-tbody");
+  document.getElementById("admin-empty").style.display = list.length ? "none" : "block";
+  const labels = { pending:"Chờ duyệt", approved:"Đã duyệt", rejected:"Từ chối" };
+  tbody.innerHTML = list.map(r => {
+    const badge = `<span class="badge ${r.status}">${labels[r.status] || r.status}</span>`;
+    let actions = "";
+    if(r.status !== "approved") actions += `<button class="btn primary" data-act="approve" data-email="${escapeHtml(r.email)}" type="button">Duyệt</button>`;
+    if(r.status !== "rejected") actions += `<button class="btn" data-act="reject" data-email="${escapeHtml(r.email)}" type="button">Từ chối</button>`;
+    actions += `<button class="btn ghost" data-act="delete" data-email="${escapeHtml(r.email)}" type="button">Xoá</button>`;
+    return `<tr><td class="em">${escapeHtml(r.email)}</td><td>${fmtDate(r.ts)}</td><td>${badge}</td><td><div class="row-actions">${actions}</div></td></tr>`;
+  }).join("");
+  tbody.querySelectorAll("button[data-act]").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      const email = btn.dataset.email, act = btn.dataset.act;
+      btn.disabled = true;
+      try {
+        if(act === "approve") await apiCall({ action:"approve", email, pass: adminPass });
+        else if(act === "reject") await apiCall({ action:"reject", email, pass: adminPass });
+        else if(act === "delete") await apiCall({ action:"delete", email, pass: adminPass });
+        await refreshAdmin();
+      } catch(err){ alert("Thao tác thất bại. Kiểm tra kết nối."); btn.disabled = false; }
+    });
+  });
+}
+document.getElementById("admin-add-btn").addEventListener("click", async () => {
+  const input = document.getElementById("admin-add-email");
+  const email = input.value.trim();
+  if(!EMAIL_RE.test(email)) return;
+  const btn = document.getElementById("admin-add-btn");
+  btn.disabled = true; input.disabled = true;
+  try {
+    await apiCall({ action:"request", email });
+    await apiCall({ action:"approve", email, pass: adminPass });
+    input.value = "";
+    await refreshAdmin();
+  } catch(err){ alert("Không thêm được. Kiểm tra kết nối."); }
+  finally { btn.disabled = false; input.disabled = false; }
+});
+
+/* =================== INIT =================== */
+async function initAccess(){
+  showView("gate");
+  const session = loadSession();
+  if(session && session.email){
+    document.getElementById("gate-email").value = session.email;
+    setGateStatus(null, "Đang kiểm tra phiên đã lưu…");
+    try {
+      const data = await apiCall({ action:"status", email: session.email });
+      if(data.status === "approved"){ enterApp(session.email); return; }
+      applyStatus(data.status);
+    } catch(err){ applyStatus("error"); }
+  } else {
+    applyStatus("empty");
+  }
+}
+initAccess();
+</script>
+</body>
+</html>
