@@ -321,7 +321,23 @@
     display:none; background:var(--bg-sunken); border:1px solid var(--line-soft); border-radius:8px;
     padding:10px 12px; font-size:14.5px; line-height:1.7; margin-bottom:12px; white-space:pre-wrap;
   }
-  .qcard .script-box.show{ display:block; }
+  .qcard .script-box.show, .qcard.graded .script-box{ display:block; }
+  .qcard .script-box b{ display:block; font-size:12px; color:var(--ink-muted); margin-bottom:4px; }
+  .options.hide-opts .opt-text{ visibility:hidden; }
+  .qcard.graded .options.hide-opts .opt-text{ visibility:visible; }
+  .qimg{ display:block; max-width:240px; width:100%; height:auto; margin:0 0 8px; border:1px solid var(--line-soft); border-radius:6px; background:#fff; }
+  .seek{
+    flex:none; align-self:flex-start; margin-left:auto; border:1px solid var(--indigo-soft-line); background:var(--indigo-soft);
+    color:var(--indigo-strong); border-radius:20px; font-size:11px; padding:2px 9px; cursor:pointer; font-family:inherit;
+  }
+  .seek:hover{ border-color:var(--indigo); }
+  .audio-box{
+    position:sticky; top:8px; z-index:5; margin:14px 0 10px; padding:10px 14px; background:var(--bg-raised);
+    border:1px solid var(--indigo-soft-line); border-left:4px solid var(--indigo); border-radius:var(--radius); box-shadow:var(--shadow);
+  }
+  .audio-box audio{ width:100%; margin-top:6px; }
+  .audio-title{ font-weight:700; font-size:14px; }
+  .audio-note{ font-size:12px; color:var(--ink-muted); margin-top:4px; }
 
   .passage{
     background:var(--bg-sunken); border:1px solid var(--line); border-left:4px solid var(--indigo);
@@ -492,7 +508,7 @@
   <aside class="rail">
     <div class="brand">
       <div class="mark">Đề thi thật N3</div>
-      <div class="sub">言語知識・読解 — 7/2021 · 7/2022</div>
+      <div class="sub">言語知識・読解・聴解 — 7/2018 · 7/2021 · 7/2022</div>
       <div class="stats" id="brand-stats"></div>
       <div class="top-account" id="brand-account">
         <span class="who" id="brand-who"></span>
@@ -508,6 +524,18 @@
 </div>
 
 <script src="exams.js"></script>
+<!-- Dữ liệu các đề thi thật (mỗi file tự EXAMS.push một đề) -->
+<script src="data/real_2019-07.js"></script>
+<script src="data/real_2022-07.js"></script>
+<script src="data/real_2023-07.js"></script>
+<script src="data/real_2018-12.js"></script>
+<script src="data/real_2019-12.js"></script>
+<script src="data/real_2020-12.js"></script>
+<script src="data/real_2021-12.js"></script>
+<script src="data/real_2022-12.js"></script>
+<script src="data/real_2023-12.js"></script>
+<script src="data/real_2024-07.js"></script>
+<script>EXAMS.sort((a,b) => (b.date || "").localeCompare(a.date || ""));</script>
 <script>
 /* =================== GIAO DIỆN ĐỀ =================== */
 const SECTION_HINTS = {
@@ -522,7 +550,12 @@ const SECTION_HINTS = {
   "読解 問題4 内容理解（短文）": "Đọc đoạn ngắn (~150–200 chữ) và trả lời.",
   "読解 問題5 内容理解（中文）": "Đọc đoạn trung bình (~350 chữ) và trả lời.",
   "読解 問題6 内容理解（長文）": "Đọc đoạn dài (~550 chữ) và trả lời.",
-  "読解 問題7 情報検索": "Tìm thông tin trong thông báo/tờ hướng dẫn."
+  "読解 問題7 情報検索": "Tìm thông tin trong thông báo/tờ hướng dẫn.",
+  "聴解 問題1 課題理解": "Nghe câu hỏi trước, rồi nghe hội thoại và chọn việc cần làm (có lựa chọn in trên giấy).",
+  "聴解 問題2 ポイント理解": "Nghe câu hỏi, có thời gian đọc lựa chọn, rồi nghe hội thoại và chọn ý đúng.",
+  "聴解 問題3 概要理解": "Nghe hết đoạn hội thoại rồi mới nghe câu hỏi + lựa chọn (lựa chọn chỉ hiện sau khi nộp bài).",
+  "聴解 問題4 発話表現": "Nhìn tranh, người có mũi tên sẽ nói gì? (lựa chọn chỉ nghe, hiện sau khi nộp bài).",
+  "聴解 問題5 即時応答": "Nghe một câu rồi chọn câu đáp lại phù hợp (lựa chọn chỉ nghe, hiện sau khi nộp bài)."
 };
 const LAST_TAB_KEY = "n3_real_last_tab";
 const resultKey = id => "n3_real_" + id + "_result";
@@ -544,7 +577,7 @@ function buildShell(){
     <section class="panel" id="panel-${ex.id}">
       <div class="page-head">
         <h1>${ex.title}</h1>
-        <p>${ex.desc} Sau khi nộp bài, mỗi câu có giải thích ngắn bằng tiếng Việt. Phần 聴解 không có vì file đề không kèm audio. <a href="${encodeURI(ex.pdf)}" target="_blank" rel="noopener">Xem PDF gốc</a></p>
+        <p>${ex.desc} Sau khi nộp bài, mỗi câu có giải thích ngắn bằng tiếng Việt. ${ex.audio ? "" : "Phần 聴解 không có vì file đề không kèm audio. "}<a href="${encodeURI(ex.pdf)}" target="_blank" rel="noopener">Xem PDF gốc</a>${ex.answerPdf ? ` · <a href="${encodeURI(ex.answerPdf)}" target="_blank" rel="noopener">PDF đáp án + script</a>` : ""}</p>
       </div>
       <div class="quiz-head">
         <button class="btn" id="timerbtn-${ex.id}">Bắt đầu tính giờ</button>
@@ -580,22 +613,36 @@ const state = {}; // id -> { answers:{}, submitted, timer:{sec, running, handle}
 
 function renderQuestions(ex){
   const root = $("qroot-" + ex.id);
-  let html = "", lastSection = null;
+  let html = "", lastSection = null, audioShown = false;
   ex.questions.forEach(q => {
     if(q.section !== lastSection){
       html += `<div class="qsection-title"><span class="disp jp">${q.section}</span><span class="hint">${SECTION_HINTS[q.section] || ""}</span></div>`;
       lastSection = q.section;
     }
+    if(ex.audio && q.section.startsWith("聴解") && !audioShown){
+      audioShown = true;
+      html += `<div class="audio-box"><div class="audio-title">🎧 File nghe (聴解)</div>
+        <audio id="audio-${ex.id}" controls preload="none" src="${encodeURI(ex.audio)}"></audio>
+        <div class="audio-note">Một file mp3 liền mạch cho cả phần nghe. Nút ▶ ở mỗi câu sẽ nhảy tới đoạn gần đúng của câu đó.</div></div>`;
+    }
     if(q.passage) html += `<div class="passage jp">${q.passage}</div>`;
     html += `<div class="qcard" id="${ex.id}-q${q.num}" data-num="${q.num}">
-      <div class="qtext"><span class="qnum">${q.label || q.num}.</span><span class="qsentence jp">${q.text}</span></div>
-      <div class="options">${q.options.map((opt, oi) =>
-        `<button type="button" class="opt jp" data-opt="${oi+1}"><span class="bub">${oi+1}</span><span>${opt}</span></button>`).join("")}</div>
+      <div class="qtext"><span class="qnum">${q.label || q.num}.</span><span class="qsentence jp">${q.text}</span>${q.t !== undefined && ex.audio ? `<button type="button" class="seek" data-t="${q.t}" title="Nhảy tới đoạn nghe của câu này">▶</button>` : ""}</div>
+      <div class="options${q.hideOpts ? " hide-opts" : ""}">${q.options.map((opt, oi) =>
+        `<button type="button" class="opt jp" data-opt="${oi+1}"><span class="bub">${oi+1}</span><span class="opt-text">${opt}</span></button>`).join("")}</div>
+      ${q.script ? `<div class="script-box jp"><b>スクリプト</b>
+${q.script}</div>` : ""}
       <div class="stamp"><span class="mk"></span><span class="txt"></span></div>
       ${q.explain ? `<div class="explain">💡 ${q.explain}</div>` : ""}
     </div>`;
   });
   root.innerHTML = html;
+  root.querySelectorAll(".seek").forEach(btn => btn.addEventListener("click", () => {
+    const a = $("audio-" + ex.id);
+    if(!a) return;
+    a.currentTime = Math.max(0, parseFloat(btn.dataset.t) - 2);
+    a.play().catch(() => {});
+  }));
   root.querySelectorAll(".opt").forEach(btn => btn.addEventListener("click", () => {
     const st = state[ex.id];
     if(st.submitted) return;
